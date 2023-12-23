@@ -1,0 +1,9 @@
+get seismograms with SOD: sod -f events.xml
+
+SAC commands to get the processed waveform::
+SAC> r ./seismograms/Event_2003_05_23_05_58_44/*sac
+SAC> transfer to wwsp; interpolate delta 0.001; taper
+SAC> w WEN06.II.AAK.00.BHZ.sac WEN06.KN.AAK..BHZ.sac
+SAC> q
+
+The figure is created by "pssac.gmt", which relies on GMT4 and "pssac2" for GMT4 (developed by Brian Savage).
