@@ -1,0 +1,36 @@
+#!/bin/csh
+
+set shiftwen06 = 0.028
+
+pssac2 -JX8c/-5c -R1100/1400/-1.5/1.5 -Y15c -M1 -K -Ba100f10/a2wSen<<END>tmp.ps
+WEN06.D9303.1993.II.ARU.00.BHZ.sac 0 0 1p,red
+WEN06.D9303.2003.II.ARU.00.BHZ.sac $shiftwen06 0 1p,blue
+END
+
+pssac2 -JX8c/-5c -R1149/1154/-1.5/1.5 -Y-6c -M1 -O -K -Ba1f0.1/a2wSen<<END>>tmp.ps
+WEN06.D9303.1993.II.ARU.00.BHZ.sac 0 0 1p,red
+WEN06.D9303.2003.II.ARU.00.BHZ.sac $shiftwen06 0 1p,blue
+END
+
+pssac2 -JX8c/-5c -R1349/1354/-1.5/1.5 -Y-6c -M1 -O -K -Ba1f0.1/a2wSen<<END>>tmp.ps
+WEN06.D9303.1993.II.ARU.00.BHZ.sac 0 0 1p,red
+WEN06.D9303.2003.II.ARU.00.BHZ.sac $shiftwen06 0 1p,blue
+END
+
+pssac2 -JX8c/-5c -R1100/1400/-1.5/1.5 -Y12c -X9.5c -M1 -O -K -Ba100f10/a2wSen<<END>>tmp.ps
+ZW23.D9303.1993.II.ARU.00.BHZ.sac 0 0 1p,red
+ZW23.D9303.2003.II.ARU.00.BHZ.sac $shiftwen06 0 1p,blue
+END
+
+pssac2 -JX8c/-5c -R1149/1154/-1.5/1.5 -Y-6c -M1 -O -K -Ba1f0.1/a2wSen<<END>>tmp.ps
+ZW23.D9303.1993.II.ARU.00.BHZ.sac 0 0 1p,red
+ZW23.D9303.2003.II.ARU.00.BHZ.sac $shiftwen06 0 1p,blue
+END
+
+pssac2 -JX8c/-5c -R1349/1354/-1.5/1.5 -Y-6c -M1 -O -K -Ba1f0.1/a2wSen<<END>>tmp.ps
+ZW23.D9303.1993.II.ARU.00.BHZ.sac 0 0 1p,red
+ZW23.D9303.2003.II.ARU.00.BHZ.sac $shiftwen06 0 1p,blue
+END
+
+ps2pdf tmp.ps
+
