@@ -1,0 +1,23 @@
+The waveforms and instrument response can be downloaded with SOD (http://www.seis.sc.edu/sod/index.html).
+
+seismograms: sod -f events.xml
+get PZ file for II.ARU: find_responses -b 1990 -e 2023 -n II -s ARU -c BHZ
+
+SAC commands to get the processed waveform:
+SAC> r ./seismograms/Event_1993_12_01_00_59_01/II.ARU.00.BHZ.sac
+SAC> transfer to wwsp; interpolate delta 0.001
+SAC> w WEN06.D9303.1993.II.ARU.00.BHZ.sac
+
+SAC> r ./seismograms/Event_2003_09_06_15_46_59/II.ARU.00.BHZ.sac
+SAC> transfer to wwsp; interpolate delta 0.001
+SAC> w WEN06.D9303.2003.II.ARU.00.BHZ.sac
+
+SAC> r ./seismograms/Event_1993_12_01_00_59_01/II.ARU.00.BHZ.sac 
+SAC> transfer from polezero s ./polezero/II.ARU.00.BHZ.1989_055_00_00_00.sacpz to wwsp
+SAC> bp c 0.6 3.0 p2; interpolate delta 0.001; mul 1e9
+SAC> w ZW23.D9303.1993.II.ARU.00.BHZ.sac
+
+SAC> r ./seismograms/Event_2003_09_06_15_46_59/II.ARU.00.BHZ.sac 
+SAC> transfer from polezero s ./polezero/II.ARU.00.BHZ.2003_112_07_39_00.sacpz to wwsp
+SAC> bp c 0.6 3.0 p2; interpolate delta 0.001; mul 1e9
+SAC> w ZW23.D9303.2003.II.ARU.00.BHZ.sac
