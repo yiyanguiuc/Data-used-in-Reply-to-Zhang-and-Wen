@@ -1,0 +1,37 @@
+#!/bin/csh
+
+set leftb = 744.5
+set rightb = 751.5
+set shiftwen06 = 2.253
+set shiftzw23 = 2.165
+
+pssac2 -P -JX15c/-4c -R$leftb/$rightb/-1/1 -Y22c -M1 -K -Ba2f1/a2wSen<<END>tmp.ps
+WEN06.D2.1993.II.OBN.00.BHZ.sac 0 0 1p,red
+WEN06.D2.2004.II.OBN.00.BHZ.sac $shiftwen06 0 1p,blue
+END
+
+pssac2 -JX15c/-4c -R$leftb/$rightb/-1.5/1.5 -Y-5c -M1 -O -K -Ba2f1/a2wSen<<END>>tmp.ps
+ZW23.D2.1993.II.OBN.00.BHZ.sac 0 0 1p,red
+ZW23.D2.2004.II.OBN.00.BHZ.sac $shiftzw23 0 1p,blue
+END
+
+set leftb = 1131.3
+set rightb = 1138.3
+set shiftwen06 = 0.032
+
+pssac2 -JX15c/-4c -R$leftb/$rightb/-1.5/1.5 -Y-5c -M1 -O -K -Ba2f1/a2wSen<<END>>tmp.ps
+WEN06.D9303.1993.II.OBN.00.BHZ.sac 0 0 1p,red
+WEN06.D9303.2003.II.OBN.00.BHZ.sac $shiftwen06 0 1p,blue
+END
+
+pssac2 -JX15c/-4c -R$leftb/$rightb/-1.5/1.5 -Y-5c -M1 -O -K -Ba2f1/a2wSen<<END>>tmp.ps
+ZW23.D9303.1993.II.OBN.00.BHZ.sac 0 0 1p,red
+ZW23.D9303.2003.II.OBN.00.BHZ.sac $shiftwen06 0 1p,blue
+END
+
+pssac2 -JX15c/-4c -R$leftb/$rightb/-1.5/1.5 -Y-5c -M1 -O -K -Ba2f1/a2wSen<<END>>tmp.ps
+YSR21.D9303.1993.II.OBN.00.BHZ.sac 0 0 1p,red
+YSR21.D9303.2003.II.OBN.00.BHZ.sac $shiftwen06 0 1p,blue
+END
+
+ps2pdf tmp.ps
