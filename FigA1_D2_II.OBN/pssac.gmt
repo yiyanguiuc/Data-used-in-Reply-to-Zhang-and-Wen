@@ -1,0 +1,12 @@
+#!/bin/csh
+
+set leftb = 744.5
+set rightb = 751.5
+set shiftysr21 = 2.251
+
+pssac2 -JX15c/-4c -R$leftb/$rightb/-1/1 -Y5c -M1 -K -Ba2f1/a2wSen<<END>tmp.ps
+YSR21.D2.1993.II.OBN.00.BHZ.sac 0 0 1p,red
+YSR21.D2.2004.II.OBN.00.BHZ.sac $shiftysr21 0 1p,blue
+END
+
+ps2pdf tmp.ps

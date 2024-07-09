@@ -1,0 +1,23 @@
+The raw data can be found from the folder Fig2_II.OBN (go one folder up).
+
+The data processing steps are clearly described in Yang and Song (2020, JGR, https://doi. org/10.1029/2019JB018652), a reference of YSR21: "removing the mean and trend, integrating from velo- city to displacement records, convolving with the World‐Wide Standardized Seismograph Network short‐period response, and further bandpass filtering between 0.6 and 3.0 Hz".
+
+Below are the corresponding SAC commands to get the processed waveform in YSR21 for doublet D2:
+
+SAC> r ../Fig2_II.OBN/seismograms/Event_1993_11_05_07_02_06/II.OBN.00.BHZ.sac 
+SAC> rmean; rtrend; int; transfer to wwsp; bp c 0.6 3; interpolate delta 0.001
+SAC> w YSR21.D2.1993.II.OBN.00.BHZ.sac
+
+SAC> r ../Fig2_II.OBN/seismograms/Event_2004_05_09_22_25_31/II.OBN.00.BHZ.sac 
+SAC> rmean; rtrend; int; transfer to wwsp; bp c 0.6 3; interpolate delta 0.001
+SAC> w YSR21.D2.2004.II.OBN.00.BHZ.sac 
+
+Note the processing steps are different from those in the comment by Zhang and Wen.
+
+(1) Instrument response is not yet removed for dt computation (“we adopted the dt measurements from the interpolated (to 1000 sps) BHZ waveform data in Yang and Song (2020b)”).
+
+(2) A correction for instrument upgrade is conducted separately and exemplified in the Fig. 2 of YSR21, and the values are documented in the 6th column of Table S2 of YSR21.
+
+(3) We also notice Zhang and Wen likely used a two-pass filter, but we used one-pass filter here.
+
+It is therefore not surprising that Zhang and Wen were not able to reproduce our dt measurements and waveforms.
